@@ -42,7 +42,9 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // https://github.com/nuxt-community/proxy-module
+    '@nuxtjs/proxy'
   ],
   styleResources: {
     scss: ['~assets/global.scss']
@@ -55,7 +57,18 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+  proxy: [
+    /*    // Proxies /foo to http://example.com/foo
+    'http://example.com/foo',
 
+    // Proxies /api/books/!*!/!**.json to http://example.com:8000
+    'http://example.com:8000/api/books/!*!/!**.json', */
+
+    // You can also pass more options
+    // https://go.nuxtjs.dev/axios
+    // 简写,将foo代理到http://icanhazip.com
+    ['http://icanhazip.com/foo', { ws: false }]
+  ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],

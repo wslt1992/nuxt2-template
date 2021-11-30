@@ -36,11 +36,22 @@ export default class Login extends Vue {
 
   created () {
     this.$store.commit('auth/clearToken')
+
+    /* 测试axios和proxy */
+    this.testAxios()
   }
 
   onLogin () {
     const { name } = this.active
     this.login(name)
+  }
+
+  async testAxios () {
+    // const ip = await this.$axios.$get('http://icanhazip.com')
+
+    /* 开启代理 */
+    const ip = await this.$axios.$get('/foo/234')
+    console.log('ip:', ip)
   }
 
   login (name: string) {
