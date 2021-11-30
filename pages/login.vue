@@ -50,3 +50,10 @@ export default class Login extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+
+h1 {
+  color: $theme-color;
+}
+</style>
