@@ -34,6 +34,10 @@ import Component from 'vue-class-component'
 export default class Login extends Vue {
   active = { name: '' }
 
+  created () {
+    this.$store.commit('auth/clearToken')
+  }
+
   onLogin () {
     const { name } = this.active
     this.login(name)
@@ -41,7 +45,7 @@ export default class Login extends Vue {
 
   login (name: string) {
     this.$store.commit('auth/setToken', name)
-    const redirect = this.$route.query.redirect as string
+    const redirect = this.$route.query.redirect as string || '/'
     this.$router.replace(redirect)
   }
 }

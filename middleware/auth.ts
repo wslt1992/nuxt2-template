@@ -5,6 +5,7 @@
  * * @Strong 这是一个路由中间件，请不要在 serverMiddleware 中使用 *
  * **********************************************************
  */
+import auth from '~/utils/auth'
 
 // 路由白名单，直接绕过路由守卫
 
@@ -30,17 +31,14 @@ export default (content: any) => {
     return
   }
 
-  const token = store.getters['auth/getToken']
+  let token = store.getters['auth/getToken']
+  /* 刷新后,重新加载token */
+  if (!token) {
+    store.commit('auth/setToken', auth.token)
+    token = auth.token
+  }
   // 未登录
   if (!token) {
     redirect(`${LOGIN_PATH}?redirect=${encodeURIComponent(fullPath)}`)
   }
-  // 已登录但是state因刷新丢失
-  /* if (token && !store.state.auth.userId) {
-    try {
-      auth.refresh(`${LOGIN_PATH}?redirect=${encodeURIComponent(fullPath)}`)
-    } catch (e) {
-      window.console.error('auth error: ', e)
-    }
-  } */
 }

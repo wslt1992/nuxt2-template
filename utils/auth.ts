@@ -2,9 +2,11 @@ const TOKEN = 'token'
 
 class Auth {
   set token (token) {
-    if (typeof token === 'string') {
-      localStorage.setItem(TOKEN, token)
+    if (token === null) {
+      localStorage.removeItem(TOKEN)
+      return
     }
+    localStorage.setItem(TOKEN, token)
   }
 
   get token () {
