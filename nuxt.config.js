@@ -40,13 +40,13 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
+    '@nuxtjs/stylelint-module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    '@nuxtjs/axios'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -55,5 +55,40 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],
+    // https://nuxtjs.org/docs/configuration-glossary/configuration-build#hardsource
+    hardSource: true
+    // cache:true
+  },
+  /* yarn generate相关配置 */
+  generate: {
+    // https://nuxtjs.org/docs/directory-structure/dist
+    dir: 'dist', // 默认值为dist
+    subFolders: false // 默认为true,将page放入子文件夹中
+  },
+  router: {
+    // https://nuxtjs.org/docs/configuration-glossary/configuration-router#middleware
+    // Run the middleware/auth.js on every page
+    middleware: 'auth', // 用于鉴权登录状态
+
+    mode: 'history',
+    // https://nuxtjs.org/docs/configuration-glossary/configuration-router#extendroutes
+    extendRoutes (routes, resolve) {
+      /* 自定义路径 */
+      const route = [
+        {
+          name: 'index2',
+          path: '/index2',
+          component: resolve(
+            __dirname,
+            'pages/index.vue'
+          )
+        }
+      ]
+      routes.push(...route)
+    }
+  },
+  server: {
+    /* 端口 */
+    port: 4000 // default: 3000
   }
 }
