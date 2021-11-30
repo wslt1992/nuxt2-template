@@ -1,3 +1,4 @@
+const { env } = process
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -67,7 +68,7 @@ export default {
     // You can also pass more options
     // https://go.nuxtjs.dev/axios
     // 简写,将foo代理到http://icanhazip.com
-    ['http://icanhazip.com/foo', { ws: false }]
+    [`${env.api}/api`, { ws: false }]
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

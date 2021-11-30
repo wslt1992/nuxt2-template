@@ -50,7 +50,7 @@ export default class Login extends Vue {
     // const ip = await this.$axios.$get('http://icanhazip.com')
 
     /* 开启代理 */
-    const ip = await this.$axios.$get('/foo/234')
+    const ip = await this.$axios.$get('/api/234')
     console.log('ip:', ip)
   }
 
