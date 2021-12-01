@@ -65,6 +65,7 @@ export default class Login extends Vue {
 <style lang="scss">
 
 h1 {
+  // 用于测试
   color: $theme-color;
 }
 </style>
