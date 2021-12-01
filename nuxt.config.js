@@ -45,8 +45,14 @@ export default {
     '@nuxtjs/stylelint-module',
     '@nuxtjs/dotenv',
     // https://github.com/nuxt-community/proxy-module
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    // https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/eslint-module'
   ],
+  eslint: {
+    // 开启自动修复
+    fix: true
+  },
   styleResources: {
     scss: ['~assets/global.scss']
   },
