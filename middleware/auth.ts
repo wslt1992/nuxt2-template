@@ -5,14 +5,15 @@
  * * @Strong 这是一个路由中间件，请不要在 serverMiddleware 中使用 *
  * **********************************************************
  */
+import { Middleware } from '@nuxt/types'
 import auth from '~/utils/auth'
 
-// 路由白名单，直接绕过路由守卫
-
 const LOGIN_PATH = '/login'
+// 路由白名单，直接绕过路由守卫
 const WHITE_LIST = [LOGIN_PATH]
+
 // https://nuxtjs.org/docs/internals-glossary/context
-export default (content: any) => {
+const authMiddleware: Middleware = (content) => {
   const { redirect, env, route, store } = content
   if (process.server) {
     return
@@ -42,3 +43,5 @@ export default (content: any) => {
     redirect(`${LOGIN_PATH}?redirect=${encodeURIComponent(fullPath)}`)
   }
 }
+
+export default authMiddleware
