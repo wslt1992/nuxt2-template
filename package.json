@@ -8,13 +8,13 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
-    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
+    "lint:style": "stylelint \"**/*.{vue,css,scss}\" --ignore-path .gitignore",
     "prepare": "husky install",
     "lint": "yarn lint:js && yarn lint:style"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
+    "*.{js,ts,vue}": "eslint",
+    "*.{css,scss,vue}": "stylelint"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
